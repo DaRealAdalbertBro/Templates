@@ -2,21 +2,20 @@
 > Pro tip: just replace subdomain and mydomain variable with your sub-domain and domain, you will save a lot of time with rewriting
 
 
+## Step 1 - Create an A record in your DNS settings
+##### First of all, you need to go to your domain provider's site and add the sub-domain on the list (create an A record - subdomain.mydomain.com - that directs to your web server).
 
-### 1.) First of all, you need to go to your domain provider's site and add the sub-domain on the list (create an A record - subdomain.mydomain.com - that directs to your web server).
-
-### 2.) Create a directory for your sub-domain on your server:
+## Step 2 - Create a directory for your sub-domain
 ```
 mkdir -p /var/www/subdomain.mydomain.com/html && touch /var/www/subdomain.mydomain.com/html/index.html
 ```
 
-## 3.) Create a config file:
+## Step 3 - Create an Apache2 config file
 ```
 sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
 ```
 
-## 4.) Paste the following code into your config file:
-
+## Step 4 - Setup sub-domain config file
 ```
 <VirtualHost *:80>
     ServerName subdomain.mydomain.com
@@ -39,18 +38,19 @@ sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
     RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 </VirtualHost>
 ```
+##### Save the file with CTRL+X, then press Y and ENTER.
 
-## 5.) Save the file with CTRL+X, then press Y and ENTER. Now you can enable the subdomain and reload apache:
+## Step 5 - Enable the subdomain and reload apache
 ```
 sudo a2ensite subdomain.mydomain.com
 sudo systemctl restart apache2
 ```
 
-## 6.) Almost done! You just need to edit the following file and add your sub-domain to it:
+## Step 6 - Edit "hosts" file
+##### Almost done! You just need to edit the following file and add your sub-domain to it:
 ```
 sudo nano /etc/hosts
 ```
-
 ##### And add your sub-domain after your main domain, so there will be something like this:
 ```
 127.0.1.1 mydomain mydomain subdomain.mydomain anotherSubDomain.mydomain
@@ -58,16 +58,27 @@ sudo nano /etc/hosts
 
 . . .
 ```
-
 ##### The following "mydomain" will be without suffix (.com, .eu, etc.)
+
 
 # How to generate a certificate
 
-##### 1.) If you are using a certbot, its easy, just put this command to a command line:
+## Step 1 - Installing certbot
+```
+sudo apt install certbot python3-certbot-apache
+```
+
+## Step 2 - Obtaining an SSL Certificate
+```
+sudo certbot --apache
+```
+##### Enter a recovery email address, press A [ENTER], press N [ENTER]. Choose Redirect (=2) [ENTER]
+
+## Situational - Expand certificate
 ```
 certbot -d subdomain.mydomain.com --expand
 ```
-##### or for more domains:
+##### Or for more domains:
 ```
 certbot -d subdomain.mydomain.com,anotherSubDomain.mydomain.com --expand
 ```

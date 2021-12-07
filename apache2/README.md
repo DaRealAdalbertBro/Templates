@@ -1,19 +1,19 @@
 # How to setup a sub-domain with Apache2 on Ubuntu 21.04
-> Pro tip: just replace subdomain and mydomain variable with your sub-domain and domain, you will save a lot of time with rewriting
+> Pro tip: just replace subdomain and mydomain variable with your sub-domain and domain, you will save a lot of time with rewriting[^2]
 
 
 ## Step 1 - Create an A record in your DNS settings
-##### First of all, you need to go to your domain provider's site and add the sub-domain on the list (create an A record - subdomain.mydomain.com - that directs to your web server).
+##### First of all, you need to go to your domain provider's site and add the sub-domain on the list (create an A record - subdomain.mydomain.com - that directs to your web server).[^1]
 
 ## Step 2 - Create a directory for your sub-domain
 ```
 mkdir -p /var/www/subdomain.mydomain.com/html && touch /var/www/subdomain.mydomain.com/html/index.html
-```
+```[^1]
 
 ## Step 3 - Create an Apache2 config file
 ```
 sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
-```
+```[^1]
 
 ## Step 4 - Setup sub-domain config file
 ```

@@ -10,13 +10,13 @@
 ```
 mkdir -p /var/www/subdomain.mydomain.com/html && touch /var/www/subdomain.mydomain.com/html/index.html
 ```
-<br /><br />
+<br />
 
 ## Step 3 - Create an Apache2 config file
 ```
 sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
 ```
-<br /><br />
+<br />
 
 ## Step 4 - Setup sub-domain config file
 ```
@@ -48,13 +48,12 @@ sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
 sudo a2ensite subdomain.mydomain.com
 sudo systemctl restart apache2
 ```
-<br /><br />
+<br />
 ## Step 6 - Edit "hosts" file
 ##### Almost done! You just need to edit the following file and add your sub-domain to it:
 ```
 sudo nano /etc/hosts
 ```
-<br /><br />
 ##### And add your sub-domain after your main domain, so there will be something like this:
 ```
 127.0.1.1 mydomain mydomain subdomain.mydomain anotherSubDomain.mydomain
@@ -62,7 +61,7 @@ sudo nano /etc/hosts
 
 . . .
 ```
-<br /><br />
+<br />
 ##### The following "mydomain" will be without suffix (.com, .eu, etc.)
 <br /><br /><br />
 
@@ -72,21 +71,21 @@ sudo nano /etc/hosts
 ```
 sudo apt install certbot python3-certbot-apache
 ```
-<br /><br />
+<br />
 ## Step 2 - Obtaining an SSL Certificate
 ```
 sudo certbot --apache
 ```
-<br /><br />
+<br />
 ##### Enter a recovery email address, press A [ENTER], press N [ENTER]. Choose Redirect (=2) [ENTER]
 
 ## Situational - Expand certificate
 ```
 certbot -d subdomain.mydomain.com --expand
 ```
-<br /><br />
+<br />
 ##### Or for more domains:
 ```
 certbot -d subdomain.mydomain.com,anotherSubDomain.mydomain.com --expand
 ```
-<br /><br />
+<br />

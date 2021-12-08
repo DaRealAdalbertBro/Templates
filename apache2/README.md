@@ -1,19 +1,21 @@
 # How to setup a sub-domain with Apache2 on Ubuntu 21.04
-> Pro tip: just replace subdomain and mydomain variable with your sub-domain and domain, you will save a lot of time with rewriting[^2]
+> Pro tip: just replace subdomain and mydomain variable with your sub-domain and domain, you will save a lot of time with rewriting<br /><br /><br /><br />
 
 
 ## Step 1 - Create an A record in your DNS settings
-##### First of all, you need to go to your domain provider's site and add the sub-domain on the list (create an A record - subdomain.mydomain.com - that directs to your web server).[^1]
+##### First of all, you need to go to your domain provider's site and add the sub-domain on the list (create an A record - subdomain.mydomain.com - that directs to your web server).<br /><br />
 
 ## Step 2 - Create a directory for your sub-domain
 ```
 mkdir -p /var/www/subdomain.mydomain.com/html && touch /var/www/subdomain.mydomain.com/html/index.html
-```[^1]
+```
+<br /><br />
 
 ## Step 3 - Create an Apache2 config file
 ```
 sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
-```[^1]
+```
+<br /><br />
 
 ## Step 4 - Setup sub-domain config file
 ```
@@ -39,18 +41,19 @@ sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
 </VirtualHost>
 ```
 ##### Save the file with CTRL+X, then press Y and ENTER.
-
+<br /><br />
 ## Step 5 - Enable the subdomain and reload apache
 ```
 sudo a2ensite subdomain.mydomain.com
 sudo systemctl restart apache2
 ```
-
+<br /><br />
 ## Step 6 - Edit "hosts" file
 ##### Almost done! You just need to edit the following file and add your sub-domain to it:
 ```
 sudo nano /etc/hosts
 ```
+<br /><br />
 ##### And add your sub-domain after your main domain, so there will be something like this:
 ```
 127.0.1.1 mydomain mydomain subdomain.mydomain anotherSubDomain.mydomain
@@ -58,8 +61,9 @@ sudo nano /etc/hosts
 
 . . .
 ```
+<br /><br />
 ##### The following "mydomain" will be without suffix (.com, .eu, etc.)
-
+<br /><br /><br />
 
 # How to generate a certificate
 
@@ -67,18 +71,21 @@ sudo nano /etc/hosts
 ```
 sudo apt install certbot python3-certbot-apache
 ```
-
+<br /><br />
 ## Step 2 - Obtaining an SSL Certificate
 ```
 sudo certbot --apache
 ```
+<br /><br />
 ##### Enter a recovery email address, press A [ENTER], press N [ENTER]. Choose Redirect (=2) [ENTER]
 
 ## Situational - Expand certificate
 ```
 certbot -d subdomain.mydomain.com --expand
 ```
+<br /><br />
 ##### Or for more domains:
 ```
 certbot -d subdomain.mydomain.com,anotherSubDomain.mydomain.com --expand
 ```
+<br /><br />

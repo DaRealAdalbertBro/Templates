@@ -105,3 +105,52 @@ certbot -d subdomain.mydomain.com --expand
 certbot -d subdomain.mydomain.com,anotherSubDomain.mydomain.com --expand
 ```
 
+# Creating .htaccess file
+##### File base:
+```
+Options +FollowSymLinks -MultiViews
+# Turn mod_rewrite on
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} !=localhost
+RewriteCond %{HTTP_HOST} !=127.0.0.1
+RewriteCond %{REMOTE_ADDR} !=127.0.0.1
+RewriteCond %{REMOTE_ADDR} !=::1
+```
+<br />
+##### To externally redirect /dir/foo.html to /dir/foo
+
+```
+RewriteCond %{REQUEST_URI} !(\.[^./]+)$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule (.*) $1.html [L]
+```
+<br />
+##### To externally redirect /dir/foo.htm to /dir/foo
+```
+RewriteCond %{REQUEST_URI} !(\.[^./]+)$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.htm -f
+RewriteRule (.*) $1.htm [L]
+```
+<br />
+##### To externally redirect /dir/foo.php to /dir/foo
+```
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=302,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*?)/?$ $1.php [L]
+```
+<br />
+##### End of the file (depends on permissions):
+```
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+```

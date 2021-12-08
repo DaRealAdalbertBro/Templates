@@ -106,6 +106,7 @@ certbot -d subdomain.mydomain.com,anotherSubDomain.mydomain.com --expand
 ```
 
 # Creating .htaccess file
+
 ##### File base:
 
 ```
@@ -120,6 +121,7 @@ RewriteCond %{REMOTE_ADDR} !=::1
 ```
 
 <br />
+
 ##### To externally redirect /dir/foo.html to /dir/foo
 
 ```

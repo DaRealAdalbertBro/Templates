@@ -48,15 +48,17 @@ sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
 sudo a2ensite subdomain.mydomain.com
 sudo systemctl restart apache2
 ```
-<br />
 
 ## Step 6 - Edit "hosts" file
 
 ##### Almost done! You just need to edit the following file and add your sub-domain to it:
+
 ```
 sudo nano /etc/hosts
 ```
+
 ##### And add your sub-domain after your main domain, so there will be something like this:
+
 ```
 127.0.1.1 mydomain mydomain subdomain.mydomain anotherSubDomain.mydomain
 127.0.0.1 localhost
@@ -64,7 +66,9 @@ sudo nano /etc/hosts
 . . .
 ```
 <br />
+
 ##### The following "mydomain" will be without suffix (.com, .eu, etc.)
+
 <br /><br /><br />
 
 # How to generate a certificate

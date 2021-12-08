@@ -27,7 +27,7 @@ sudo nano /etc/apache2/sites-available/subdomain.mydomain.com.conf
     DocumentRoot /var/www/subdomain.mydomain.com/html
 
     <Directory /var/www/subdomain.mydomain.com/html/>
-        Options Indexes FollowSymLinks
+        Options -Indexes +FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>

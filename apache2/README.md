@@ -70,21 +70,29 @@ sudo nano /etc/hosts
 # How to generate a certificate
 
 ## Step 1 - Installing certbot
+
 ```
 sudo apt install certbot python3-certbot-apache
 ```
+
 <br />
+
 ## Step 2 - Obtaining an SSL Certificate
+
 ```
 sudo certbot --apache
 ```
+
 <br />
+
 ##### Enter a recovery email address, press A [ENTER], press N [ENTER]. Choose Redirect (=2) [ENTER]
 
 ## Situational - Expand certificate
+
 ```
 certbot -d subdomain.mydomain.com --expand
 ```
+
 <br />
 ##### Or for more domains:
 ```

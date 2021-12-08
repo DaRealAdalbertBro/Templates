@@ -98,8 +98,10 @@ certbot -d subdomain.mydomain.com --expand
 ```
 
 <br />
+
 ##### Or for more domains:
+
 ```
 certbot -d subdomain.mydomain.com,anotherSubDomain.mydomain.com --expand
 ```
-<br />
+

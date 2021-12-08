@@ -49,7 +49,9 @@ sudo a2ensite subdomain.mydomain.com
 sudo systemctl restart apache2
 ```
 <br />
-## Step 6 - Edit `hosts` file
+
+## Step 6 - Edit "hosts" file
+
 ##### Almost done! You just need to edit the following file and add your sub-domain to it:
 ```
 sudo nano /etc/hosts

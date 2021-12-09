@@ -159,6 +159,17 @@ RewriteRule ^(.*?)/?$ $1.php [L]
 
 <br />
 
+##### To externally redirect http:// to https://
+
+```
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^mydomain\.com [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://mydomain.com/$1 [R,L]
+```
+
+<br />
+
 ##### End of the file (depends on permissions):
 
 ```

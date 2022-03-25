@@ -1,3 +1,21 @@
+# Table of contents
+
+1. [How to setup a sub-domain](https://github.com/DaRealAdalbertBro/Templates/edit/main/apache2/README.md#how-to-setup-a-sub-domain-with-apache2-on-ubuntu-2104)
+   - [Creating DNS record](https://github.com/DaRealAdalbertBro/Templates/edit/main/apache2/README.md#step-1---create-an-a-record-in-your-dns-settings)
+   - [Creating sub-domain directory](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#step-2---create-a-directory-for-your-sub-domain)
+   - [Creating config file](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#step-3---create-an-apache2-config-file)
+   - [Config setup](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#step-4---setup-sub-domain-config-file)
+   - [Final steps](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#step-5---enable-the-subdomain-and-reload-apache)
+   - [Editing "hosts" file](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#step-6---edit-hosts-file)
+2. [How to generate a certificate](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#how-to-generate-a-certificate)
+   - [Installing certbot](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#step-1---installing-certbot)
+   - [Obtaining SSL certificate](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#step-2---obtaining-an-ssl-certificate)
+   - [Situational - Expanding certificate](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#situational---expand-certificate)
+2. [Creating .htaccess file](https://github.com/DaRealAdalbertBro/Templates/tree/main/apache2#creating-htaccess-file)
+
+
+<br /><br /><br />
+
 # How to setup a sub-domain with Apache2 on Ubuntu 21.04
 > Pro tip: just replace subdomain and mydomain variable with your sub-domain and domain, you will save a lot of time with rewriting
 
